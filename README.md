@@ -31,6 +31,7 @@ struct MyWhatsNew: WhatsNewContent {
     var features: [WhatsNewFeature] {
         [
             WhatsNewFeature(
+                id: "new-charts",
                 systemImage: "chart.line.uptrend.xyaxis.circle",
                 label: "New Charts",
                 description: "Track your progress with redesigned charts."),
@@ -57,6 +58,8 @@ struct RootView: View {
 ```
 
 ## Version tracking
+
+Give every `WhatsNewFeature` a stable `id`. Stable IDs let SwiftUI preserve row identity when features are inserted, removed, or reordered.
 
 `WhatsNewVersionTracker` persists the last-shown version in `UserDefaults` and decides whether to present the sheet on launch:
 

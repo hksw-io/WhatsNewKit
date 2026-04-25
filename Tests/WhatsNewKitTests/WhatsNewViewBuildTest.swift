@@ -10,7 +10,7 @@ struct WhatsNewViewBuildTest {
         struct MockContent: WhatsNewContent {
             var title: Text { Text("Mock") }
             var features: [WhatsNewFeature] {
-                [WhatsNewFeature(description: Text("Single feature."))]
+                [WhatsNewFeature(id: "single", description: Text("Single feature."))]
             }
             var notice: WhatsNewNotice? { nil }
             var buttonText: Text { Text("OK") }
@@ -27,6 +27,7 @@ struct WhatsNewViewBuildTest {
             var features: [WhatsNewFeature] {
                 [
                     WhatsNewFeature(
+                        id: "labeled",
                         image: Image(systemName: "star"),
                         label: Text("Labeled"),
                         description: Text("With label and image.")),
@@ -46,6 +47,7 @@ struct WhatsNewViewBuildTest {
             var features: [WhatsNewFeature] {
                 [
                     WhatsNewFeature(
+                        id: "localized-label",
                         systemImage: "sparkles",
                         label: "Localized label",
                         description: "Localized description."),
@@ -68,6 +70,7 @@ struct WhatsNewViewBuildTest {
             var features: [WhatsNewFeature] {
                 (1...12).map { index in
                     WhatsNewFeature(
+                        id: "feature-\(index)",
                         image: Image(systemName: "star.circle.fill"),
                         label: Text("Feature \(index) with a longer localized label"),
                         description: Text(
@@ -91,9 +94,9 @@ struct WhatsNewViewBuildTest {
             var title: Text { Text("Computed") }
             var features: [WhatsNewFeature] {
                 [
-                    WhatsNewFeature(description: Text("First computed feature.")),
-                    WhatsNewFeature(description: Text("Second computed feature.")),
-                    WhatsNewFeature(description: Text("Third computed feature.")),
+                    WhatsNewFeature(id: "first", description: Text("First computed feature.")),
+                    WhatsNewFeature(id: "second", description: Text("Second computed feature.")),
+                    WhatsNewFeature(id: "third", description: Text("Third computed feature.")),
                 ]
             }
             var notice: WhatsNewNotice? { nil }
@@ -101,6 +104,16 @@ struct WhatsNewViewBuildTest {
         }
 
         _ = WhatsNewView(content: ComputedContent(), onDismiss: {})
+    }
+
+    @Test
+    func featureInitializerStoresStableID() {
+        let feature = WhatsNewFeature(
+            id: "stable-feature",
+            label: Text("Stable feature"),
+            description: Text("A feature with stable identity."))
+
+        #expect(feature.id == "stable-feature")
     }
 }
 #endif

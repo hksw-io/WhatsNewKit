@@ -135,7 +135,7 @@ private struct WhatsNewFeatureList: View {
 
     var body: some View {
         VStack(spacing: self.featureSpacing) {
-            ForEach(Array(self.features.enumerated()), id: \.offset) { index, feature in
+            ForEach(Array(self.features.enumerated()), id: \.element.id) { index, feature in
                 WhatsNewFeatureRow(
                     feature: feature,
                     index: index,
@@ -238,14 +238,17 @@ private struct WhatsNewPreviewContent: WhatsNewContent {
     var features: [WhatsNewFeature] {
         [
             WhatsNewFeature(
+                id: "first-feature",
                 systemImage: "sparkles",
                 label: "First feature",
                 description: "A short description of the first feature."),
             WhatsNewFeature(
+                id: "second-feature",
                 systemImage: "bolt",
                 label: "Second feature",
                 description: "A short description of the second feature."),
             WhatsNewFeature(
+                id: "third-feature",
                 systemImage: "arrow.triangle.2.circlepath",
                 label: "Third feature",
                 description: "A short description of the third feature."),
@@ -265,6 +268,7 @@ private struct LongWhatsNewPreviewContent: WhatsNewContent {
     var features: [WhatsNewFeature] {
         (1...10).map { index in
             WhatsNewFeature(
+                id: "long-feature-\(index)",
                 systemImage: "checkmark.seal.fill",
                 label: "Feature \(index) with a longer localized label",
                 description: "This feature description is intentionally longer so the row wraps cleanly without clipping, overlapping, or hiding the footer action.")
