@@ -24,10 +24,10 @@ enum Tokens {
 
     enum Motion {
         static let featureBaseDelay: Double = 0.3
-        static let featureStaggerDelay: Double = 0.15
-        static let maxFeatureStaggerDelay: Double = 0.6
-        static let revealDuration: Double = 0.4
-        static let revealOffset: CGFloat = 30
+        static let featureStaggerDelay: Double = 0.17
+        static let maxFeatureStaggerDelay: Double = 0.68
+        static let revealDuration: Double = 0.48
+        static let revealOffset: CGFloat = 38
 
         static func revealDelay(for index: Int) -> Double {
             let staggerDelay = min(Double(max(0, index)) * self.featureStaggerDelay, self.maxFeatureStaggerDelay)
