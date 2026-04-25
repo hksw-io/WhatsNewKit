@@ -59,6 +59,7 @@ public struct WhatsNewView<Content: WhatsNewContent>: View {
                             containerHeight: geometry.size.height,
                             footerFrame: self.footerFrame))
                 }
+                .scrollIndicators(.hidden)
                 .scrollBounceBehavior(.basedOnSize)
                 .onScrollGeometryChange(for: Double.self) { geometry in
                     ScrollEdgeFade.opacity(
