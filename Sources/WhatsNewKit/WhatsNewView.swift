@@ -201,7 +201,7 @@ private struct WhatsNewFeatureRow: View {
     let reduceMotion: Bool
 
     var body: some View {
-        let delay = Tokens.Motion.featureBaseDelay + (Double(index) * Tokens.Motion.featureStaggerDelay)
+        let delay = Tokens.Motion.revealDelay(for: self.index)
         let isVisible = self.featuresVisible
 
         HStack(alignment: .top, spacing: Tokens.Spacing.large) {
