@@ -94,7 +94,22 @@ public struct WhatsNewView<Content: WhatsNewContent>: View {
     }
 
     private func horizontalPadding(for width: CGFloat) -> CGFloat {
-        width < Tokens.Layout.compactWidthBreakpoint ? self.compactHorizontalPadding : self.regularHorizontalPadding
+        LayoutMetrics.horizontalPadding(
+            for: width,
+            compact: self.compactHorizontalPadding,
+            regular: self.regularHorizontalPadding,
+            breakpoint: Tokens.Layout.compactWidthBreakpoint)
+    }
+}
+
+enum LayoutMetrics {
+    static func horizontalPadding(
+        for width: CGFloat,
+        compact: CGFloat,
+        regular: CGFloat,
+        breakpoint: CGFloat) -> CGFloat
+    {
+        width <= breakpoint ? compact : regular
     }
 }
 
