@@ -245,20 +245,20 @@ struct WhatsNewViewBuildTest {
     }
 
     @Test
-    func animatedMeshPointsAreStableWithReduceMotion() {
-        let first = WhatsNewAnimatedMeshGeometry.points(phase: 0, reduceMotion: true)
-        let second = WhatsNewAnimatedMeshGeometry.points(phase: 0.5, reduceMotion: true)
+    func animatedGradientCentersAreStableWithReduceMotion() {
+        let first = WhatsNewAnimatedGradientMotion.centers(phase: 0, reduceMotion: true)
+        let second = WhatsNewAnimatedGradientMotion.centers(phase: 0.5, reduceMotion: true)
 
-        #expect(first[4].x == second[4].x)
-        #expect(first[4].y == second[4].y)
+        #expect(first[0].x == second[0].x)
+        #expect(first[0].y == second[0].y)
     }
 
     @Test
-    func animatedMeshPointsChangeAcrossPhases() {
-        let first = WhatsNewAnimatedMeshGeometry.points(phase: 0, reduceMotion: false)
-        let second = WhatsNewAnimatedMeshGeometry.points(phase: 0.25, reduceMotion: false)
+    func animatedGradientCentersChangeAcrossPhases() {
+        let first = WhatsNewAnimatedGradientMotion.centers(phase: 0, reduceMotion: false)
+        let second = WhatsNewAnimatedGradientMotion.centers(phase: 0.25, reduceMotion: false)
 
-        #expect(abs(first[4].x - second[4].x) > 0.0001)
+        #expect(abs(first[0].x - second[0].x) > 0.0001)
     }
 
     @Test
