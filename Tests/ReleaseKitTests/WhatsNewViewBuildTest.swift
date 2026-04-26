@@ -294,6 +294,21 @@ struct WhatsNewViewBuildTest {
     }
 
     @Test
+    func primaryButtonRadiusUsesRounderControlShape() {
+        #expect(Tokens.Radius.button > Tokens.Radius.large)
+    }
+
+    @Test
+    func primaryButtonKeepsSharedMinimumLabelHeight() {
+        #expect(Tokens.Layout.buttonLabelMinHeight == 28)
+    }
+
+    @Test
+    func footerUsesAsymmetricPaddingToSitCloserToBottomEdge() {
+        #expect(Tokens.Layout.footerBottomPadding < Tokens.Layout.footerTopPadding)
+    }
+
+    @Test
     func animatedGradientCentersAreStableWithReduceMotion() {
         let first = WhatsNewAnimatedGradientMotion.centers(
             phase: 0,

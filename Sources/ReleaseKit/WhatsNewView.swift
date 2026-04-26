@@ -446,19 +446,20 @@ private struct WhatsNewFooterSection<Content: WhatsNewContent>: View {
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
                     .foregroundStyle(self.style.buttonForegroundStyle)
-                    .frame(maxWidth: .infinity)
+                    .frame(maxWidth: .infinity, minHeight: Tokens.Layout.buttonLabelMinHeight)
                     .padding(.vertical, self.buttonPadding)
             }
             .buttonStyle(.plain)
             .controlSize(.extraLarge)
             .background {
-                RoundedRectangle(cornerRadius: Tokens.Radius.large, style: .continuous)
+                RoundedRectangle(cornerRadius: Tokens.Radius.button, style: .continuous)
                     .fill(self.style.buttonBackgroundStyle)
             }
-            .clipShape(RoundedRectangle(cornerRadius: Tokens.Radius.large, style: .continuous))
-            .contentShape(RoundedRectangle(cornerRadius: Tokens.Radius.large, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: Tokens.Radius.button, style: .continuous))
+            .contentShape(RoundedRectangle(cornerRadius: Tokens.Radius.button, style: .continuous))
         }
-        .padding(.vertical, Tokens.Layout.footerVerticalPadding)
+        .padding(.top, Tokens.Layout.footerTopPadding)
+        .padding(.bottom, Tokens.Layout.footerBottomPadding)
     }
 }
 
