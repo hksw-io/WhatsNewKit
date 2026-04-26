@@ -38,7 +38,7 @@ public struct WhatsNewView<Content: WhatsNewContent>: View {
                 colorScheme: self.colorScheme)
 
             GeometryReader { geometry in
-                ScrollView {
+                ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: self.contentSpacing) {
                         WhatsNewHeaderSection(
                             content: self.content,
@@ -62,7 +62,7 @@ public struct WhatsNewView<Content: WhatsNewContent>: View {
                             containerHeight: geometry.size.height,
                             footerFrame: self.footerFrame))
                 }
-                .scrollIndicators(.hidden)
+                .scrollIndicators(.never, axes: .vertical)
                 .scrollBounceBehavior(.basedOnSize)
                 .onScrollGeometryChange(for: Double.self) { geometry in
                     ScrollEdgeFade.opacity(
@@ -106,7 +106,7 @@ public struct WhatsNewView<Content: WhatsNewContent>: View {
             }
         }
         .clipped()
-        .scrollIndicators(.hidden)
+        .scrollIndicators(.never, axes: .vertical)
         .interactiveDismissDisabled()
         .whatsNewTint(self.style.tint)
         #if os(macOS)
