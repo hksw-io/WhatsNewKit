@@ -21,7 +21,7 @@ enum Tokens {
         static let compactWidthBreakpoint: CGFloat = 390
         static let compactSheetMinWidth: CGFloat = 320
         static let footerTopPadding: CGFloat = 20
-        static let footerBottomPadding: CGFloat = 8
+        static let footerBottomPadding: CGFloat = 0
         static let buttonLabelMinHeight: CGFloat = 28
     }
 

@@ -305,6 +305,7 @@ struct WhatsNewViewBuildTest {
 
     @Test
     func footerUsesAsymmetricPaddingToSitCloserToBottomEdge() {
+        #expect(Tokens.Layout.footerBottomPadding == 0)
         #expect(Tokens.Layout.footerBottomPadding < Tokens.Layout.footerTopPadding)
     }
 
