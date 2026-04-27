@@ -304,9 +304,9 @@ struct ReleaseViewBuildTest {
     }
 
     @Test
-    func footerBottomPaddingMirrorsSkipControlFootprintForButtonClearance() {
-        #expect(Tokens.Layout.footerBottomPadding == Tokens.Layout.minimumControlHeight + Tokens.Layout.footerControlSpacing)
-        #expect(Tokens.Layout.footerBottomPadding > Tokens.Layout.footerTopPadding)
+    func footerBottomPaddingClearsSheetEdgeWithoutFloatingHigh() {
+        #expect(Tokens.Layout.footerBottomPadding > 0)
+        #expect(Tokens.Layout.footerBottomPadding < Tokens.Layout.footerTopPadding)
     }
 
     @Test
